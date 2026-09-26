@@ -57,9 +57,9 @@ export function AuthPage() {
               <p>Access your account to manage your canteen, orders, and more.</p>
             </div>
 
-            <div className={styles.highlights} aria-label="Workspace benefits">
+            <ul className={styles.highlights} aria-label="Workspace benefits">
               {highlights.map((item) => (
-                <div className={styles.highlight} key={item.title}>
+                <li className={styles.highlight} key={item.title}>
                   <span className={styles.highlightIcon}>
                     <AuthIcon name={item.icon} />
                   </span>
@@ -67,9 +67,9 @@ export function AuthPage() {
                     <strong>{item.title}</strong>
                     <span>{item.detail}</span>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
             <div className={styles.offices}>
               <p className={styles.officesLabel}>Our offices</p>
