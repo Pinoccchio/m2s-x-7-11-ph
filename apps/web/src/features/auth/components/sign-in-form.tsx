@@ -17,7 +17,6 @@ type FormNotice = {
 export function SignInForm() {
   const [employeeId, setEmployeeId] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [notice, setNotice] = useState<FormNotice | null>(null);
@@ -34,6 +33,7 @@ export function SignInForm() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    //FORM VALIDATION-//
     const nextErrors: FormErrors = {};
     if (!employeeId.trim()) nextErrors.employeeId = "Enter your employee ID.";
     if (!password) nextErrors.password = "Enter your password.";
@@ -46,14 +46,15 @@ export function SignInForm() {
       return;
     }
 
-    // BACKEND HANDOFF: replace this notice with the agreed auth API call.
-    // Pass rememberMe only when the backend defines session persistence.
+    // Sign-in is a preview until the account service is connected.
+    // Add remember-me behavior after its rules are agreed with the backend team.
     setNotice({
       title: "Sign in is not available yet.",
       detail: "Account access will be available soon. Your details were not submitted.",
     });
   }
 
+  //PENDING ACTIONS-//
   function showPending(title: string) {
     setErrors({});
     setNotice({
@@ -69,8 +70,9 @@ export function SignInForm() {
         <p>Access your account to manage your canteen, orders, and more.</p>
       </header>
 
+      {/* Show errors beside missing fields and focus the first one. */}
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
-        {/* EMPLOYEE ID INPUT: replaces Username in the supplied reference. */}
+        {/* //EMPLOYEE ID INPUT-// */}
         <div className={styles.field}>
           <label htmlFor="employee-id">Employee ID</label>
           <div className={styles.inputWrap}>
@@ -99,7 +101,7 @@ export function SignInForm() {
           )}
         </div>
 
-        {/* PASSWORD INPUT: includes an accessible show/hide control. */}
+        {/* //PASSWORD INPUT-// */}
         <div className={styles.field}>
           <label htmlFor="password">Password</label>
           <div className={styles.inputWrap}>
@@ -138,15 +140,15 @@ export function SignInForm() {
         </div>
 
         <div className={styles.formOptions}>
+          {/* //REMEMBER ME-// */}
           <label className={styles.remember}>
             <input
               type="checkbox"
               name="rememberMe"
-              checked={rememberMe}
-              onChange={(event) => setRememberMe(event.target.checked)}
             />
             <span>Remember me</span>
           </label>
+          {/* //FORGOT PASSWORD-// */}
           <button
             className={styles.textButton}
             type="button"
@@ -156,7 +158,7 @@ export function SignInForm() {
           </button>
         </div>
 
-        {/* SIGN-IN BUTTON: validates the form; API submission starts here later. */}
+        {/* //SIGN-IN BUTTON-// */}
         <button className={styles.submitButton} type="submit">
           Sign In <AuthIcon name="arrow" />
         </button>
@@ -165,7 +167,7 @@ export function SignInForm() {
           <span>OR</span>
         </div>
 
-        {/* CREATE ACCOUNT: visible for design review, pending backend flow. */}
+        {/* //CREATE ACCOUNT BUTTON-// */}
         <button
           className={styles.secondaryButton}
           type="button"
@@ -176,6 +178,7 @@ export function SignInForm() {
         </button>
       </form>
 
+      {/* //STATUS MESSAGE-// */}
       <div className={styles.noticeRegion} role="status" aria-live="polite" aria-atomic="true">
         {notice && (
           <div className={styles.notice}>

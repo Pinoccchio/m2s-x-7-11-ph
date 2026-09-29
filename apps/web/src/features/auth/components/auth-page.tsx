@@ -16,19 +16,19 @@ export function AuthPage() {
     <main className={styles.page}>
       <section className={styles.shell} aria-label="M2S sign-in">
         <div className={styles.hero}>
+          {/* //HERO IMAGE-// */}
           <Image
             src="/images/m2s-office-hero-composite.png"
             alt=""
             fill
             priority
-            unoptimized
-            sizes="(max-width: 820px) 100vw, 690px"
+            sizes="(max-width: 820px) 100vw, 750px"
             className={styles.heroPhoto}
           />
           <div className={styles.heroVeil} aria-hidden="true" />
 
           <div className={styles.heroContent}>
-            {/* BRAND LOCKUP: transparent asset derived from the supplied artwork. */}
+            {/* //BRAND LOGO-// Layer the image twice to match the supplied artwork. */}
             <div className={styles.brandLockup}>
               <Image
                 src="/brand/m2s-seven-eleven-lockup.png"
@@ -48,6 +48,7 @@ export function AuthPage() {
               />
             </div>
 
+            {/* //WELCOME MESSAGE-// */}
             <div className={styles.heroIntro}>
               <h1>
                 Welcome Back!
@@ -57,6 +58,7 @@ export function AuthPage() {
               <p>Access your account to manage your canteen, orders, and more.</p>
             </div>
 
+            {/* //BENEFITS-// */}
             <ul className={styles.highlights} aria-label="Workspace benefits">
               {highlights.map((item) => (
                 <li className={styles.highlight} key={item.title}>
@@ -71,6 +73,7 @@ export function AuthPage() {
               ))}
             </ul>
 
+            {/* //OFFICE LOCATIONS-// */}
             <div className={styles.offices}>
               <p className={styles.officesLabel}>Our offices</p>
               <ul>
@@ -88,6 +91,7 @@ export function AuthPage() {
           </div>
         </div>
 
+        {/* //SIGN-IN PANEL-// */}
         <div className={styles.formPanel}>
           <SignInForm />
           <p className={styles.copyright}>

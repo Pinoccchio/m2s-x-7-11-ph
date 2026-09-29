@@ -1,22 +1,34 @@
 # M2S X 7-11 Ph
 
-Monorepo for the M2S X 7-11 Ph product. The web frontend lives in `apps/web`.
+This repository contains the Next.js frontend for M2S X 7-11 Ph. The current screen is a sign-in prototype; backend authentication is not connected.
 
 ## Getting started
+
+Use Node.js and npm. Install dependencies and start the app from the repository root:
 
 ```bash
 npm install
 npm run dev
 ```
 
-The web app runs at `http://localhost:3000`.
+Open `http://localhost:3000`. The home route redirects to `/login`.
 
-## Workspaces
+## Repository layout
 
-- `apps/web` — Next.js frontend
-- `packages/*` — shared packages added when there is a real shared use case
-- `docs` — product, UI, and API integration decisions
+- `apps/web` — Next.js app, including the sign-in screen and static assets.
+- `docs` — current UI behavior, project structure, API handoff, and an initial dashboard wireframe.
+- `package.json` and `turbo.json` — npm workspace and task configuration.
 
-Use `npm run build`, `npm run lint`, and `npm run typecheck` from the repo root.
+The workspace configuration allows future `apps/*` and `packages/*` entries. Only `apps/web` exists today. See [project structure](docs/project-structure.md) for the current layout and extension guidelines.
 
-See [project structure](docs/project-structure.md), [API handoff](docs/api-integration.md), [auth page handoff](docs/auth-page.md), and [initial dashboard wireframe](docs/wireframe.md).
+## Checks
+
+Run these from the repository root:
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+See the [web app guide](apps/web/README.md), [auth page notes](docs/auth-page.md), and [API handoff](docs/api-integration.md) for behavior and integration details. The [dashboard wireframe](docs/wireframe.md) is a concept, not an implemented route.
